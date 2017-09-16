@@ -109,12 +109,81 @@
 % \and
 % National Institute for Nuclear Physics (INFN), Bari Division, Bari, Italy
 % }
-\department{Dipartimento di Informatica}
-\laboratory{LACAM Laboratory}
-\group{Machine Learning}
-\institutelogo{\includegraphics[width=25pt]{figures/unibaba}}
-\lablogo{\includegraphics[width=35pt]{figures/lacam}}
+\department{\bf University of Bari\quad ---\quad Department of Computer Science\quad ---\quad Department
+    of Physics\\
+    LACAM Machine Learning Lab\quad ---\quad National Institute for Nuclear Physics}
+%\laboratory{LACAM Laboratory}
+%\group{Machine Learning}
+\institutelogo{\includegraphics[width=25pt]{figures/unibaba}
+      \hspace{20pt}
+      % \vspace{5pt}
+      \includegraphics[width=32pt]{figures/lacam}
+      \hspace{20pt}
+      \includegraphics[width=32pt]{figures/fisicalogo}
+      \hspace{25pt}
+      \includegraphics[width=22pt]{figures/infn}}
+%\lablogo{\includegraphics[width=35pt]{figures/lacam}}
 \date{19th September - \textbf{ECML-PKDD 2017} - Skopje, Macedonia}
+
+\makeatletter
+\defbeamertemplate*{title page}{custom-enziteto}[1][]
+{
+  \begin{minipage}[t]{0.9\linewidth}
+    \vspace{0pt}
+    % \includegraphics[width=25pt]{Figures/unibaba}
+    \ifdefined\@institutelogo
+    \@institutelogo
+    \fi
+  \end{minipage}
+  \begin{minipage}[t]{0.9\linewidth}
+    \vspace{2pt}
+    \flushleft
+    {\usebeamerfont{institute}\insertinstitute\par}
+    \vspace{2pt}
+    \ifdefined\@department
+    \tiny\@department
+    \fi
+  \end{minipage}
+  \ifdefined\@laboratory
+  %\hspace{10pt}
+  \begin{minipage}[t]{0.12\linewidth}
+    \vspace{0pt}
+    \ifdefined\@lablogo
+    \@lablogo
+    \else
+    \hspace{10pt}
+    \fi
+  \end{minipage}
+  \begin{minipage}[t]{0.40\linewidth}
+    \vspace{7pt}
+    \flushleft
+    \tiny\textbf{\@laboratory}\par
+    \vspace{2pt}
+    \ifdefined\@group
+    \@group
+    \fi
+  \end{minipage}
+  \par
+  \fi
+  \vspace{15pt}
+  
+  \Large\usebeamerfont{title}\textcolor{lacamdarklilac5}{\inserttitle}\par%\textcolor{lacamlilac}{\inserttitle}\par
+  \vspace{5pt}
+  \small\usebeamerfont{subtitle}\textcolor{lacamlilac}{\insertsubtitle}\par
+  \vspace{15pt}
+  \usebeamerfont{author}\insertauthor\par
+  
+  \ifdefined\@gliph
+  \vspace{7pt}
+  \@gliph\par
+  \vspace{7pt}
+  \else
+  \vspace{21pt}
+  \fi
+  \usebeamerfont{date}\insertdate\par
+  
+}
+\makeatother
 
 
 {
