@@ -85,7 +85,8 @@
 \newcommand{\cmark}{\ding{51}}%
 \newcommand{\xmark}{\ding{55}}
 
-\addbibresource{../referomnia/referomnia.bib}
+% \bibliographystyle{splncs03}
+% \bibliography{../tiselac}
 
 \setbeamertemplate{bibliography item}{\hspace{10pt}\raise .2ex\hbox{\textcolor{lacamlilac}{$\boldsymbol{\oplus}$}}}
 
@@ -222,7 +223,7 @@
     $p(\mathbf{X})$ from a set of i.i.d. samples $\mathcal{D}=\{\mathbf
     x^i\}_{i=1}^m$ over random variables (RVs) $\mathbf{X}=\{X_{1},\dots,X_{n}\}$\\[17pt]
     
-    Given such an estimator, one uses it to \emph{answers
+    Given such an estimator, one uses it to \emph{answer
     probabilistic queries} about configurations on $\mathbf{X}$,
   i.e. to do \emph{\textbf{inference}}.
   E.g., classification can be performed by Most Probable Explanaition
@@ -236,7 +237,7 @@
             expressiveness}}} of the model to learn
     \item the \highlighttext[gold4]{\textbf{\emph{cost of learning}}}
       such a model
-      \item and the \highlighttext[petroil2]{\textbf{\emph{cost of performing inference}}} on it.
+      \item and the \highlighttext[petroil2]{\textbf{\emph{cost of performing inference}}} on it
     \end{itemize}
 
 \end{frame}
@@ -260,7 +261,7 @@
     on the other hand, are density estimators for which some kind of  \highlighttext[petroil2]{\textbf{\emph{exact}} \textbf{inference is}
     \textbf{\emph{tractable}}}, i.e. \emph{polynomial} in the number
   of RVs, i.e., $n$, or their
-    domains.\par
+    domains\par
     \hfill$\rightarrow$ \highlighttext[gold4]{learning may still be hard to scale on
     high-dimensional data}\\[20pt]
 
@@ -279,8 +280,8 @@
     $$\highlight[lacamlilac]{\mathsf{p}(\mathbf{x}) =\prod\nolimits_{i=1}^{n}\mathsf{p}(x_{i})}$$\vspace{5pt}
 
     Learning a PoB has linear time complexity
-    $\highlight[gold4]{O(nm)}$.\par
-    Complete evidence inference is linear $\highlight[petroil2]{O(n)}$.\par
+    $\highlight[gold4]{O(nm)}$\par
+    Complete evidence inference is linear $\highlight[petroil2]{O(n)}$\par
     
   \end{frame}
 
@@ -298,8 +299,8 @@
     $$\highlight[lacamlilac]{\mathsf{p}(\mathbf{x}) =
     \prod\nolimits_{i=1}^n\mathsf{p}(x_i|\mathrm{Pa}_{x_i})}$$\vspace{5pt}
 
-    Complete evidence inference is still linear for \textsf{CLtrees}: $\highlight[petroil2]{O(n)}$.\par
-    But learning now  takes  quadratic time $\highlight[gold4]{O(n^2(m + \log n))}$.\par
+    Complete evidence inference is still linear for \textsf{CLtrees}: $\highlight[petroil2]{O(n)}$\par
+    But learning now  takes  quadratic time $\highlight[gold4]{O(n^2(m + \log n))}$\par
   \end{frame}
 
 
@@ -428,32 +429,34 @@ complete evidence inference is still linear $\highlight[petroil2]{O(n)}$!
   \begin{minipage}{0.9\linewidth}
     \vspace{10pt}
         \scriptsize
-        {\hrule\flushleft\textsf{LearnCNet}($\mathcal{D}$, $\mathbf{X}$, $\alpha$,
+        {\hrule\flushleft\textsf{LearnCNet}($\mathcal{D}$, $\mathbf{X}$, 
         $\delta$, $\sigma$)\\\hrule}
         % \blindtext
 %\begin{algorithm}
 %  \caption{\textsf{\textsf{LearnCNet}}($\mathcal{D}$, $\mathbf{X}$, $\alpha$, $\delta$, $\sigma$)}
 %  \label{algo:learn-cnet}
   \begin{algorithmic}[1]
-    \State \textbf{Input:} a dataset $\mathcal{D}$ over RVs $\mathbf{X}$; $\alpha$: $\delta$
+    \State \textbf{Input:} a dataset $\mathcal{D}$ over RVs
+    $\mathbf{X}$; $\delta$
     min number samples; $\sigma$ min number features
-    \State  \textbf{Output:}  a CNet $\mathcal{C}$ encoding  $\mathsf{p}_{\mathcal{C}}(\textbf{X})$ learned from $\mathcal D$
+    \State  \textbf{Output:}  a CNet $\mathcal{C}$ encoding  $\mathsf{p}_{\mathcal{C}}(\mathbf{X})$ learned from $\mathcal D$
     \If {$|\mathcal D|>\delta$ \textbf{and} $|\mathbf X|>\sigma$}
-    \State $X_i\leftarrow  \mathsf{select}(\mathcal D, \mathbf X, \alpha)$
+    \State $X_i\leftarrow  \mathsf{select}(\mathcal D, \mathbf X)$
     % \If {$\mathsf{success}$}
     %\Comment {select the RV to condition on}
     \State $\mathcal D_0 \leftarrow \{\xi \in \mathcal D: \xi[X_i]=0 \}$, $\mathcal D_1 \leftarrow \{\xi \in \mathcal D: \xi[X_i]=1 \}$
     \State $w_0 \leftarrow |\mathcal D_0| / |\mathcal D|$, $w_1 \leftarrow |\mathcal   D_1| / |\mathcal D|$
     \State $\mathcal{C} \leftarrow
     w_0\cdot\mathsf{LearnCNet}(\mathcal D_0, \mathbf X_{\setminus i},
-    \alpha, \delta, \sigma) + w_1 \cdot\mathsf{LearnCNet}(\mathcal D_1, \mathbf X_{\setminus i}, \alpha, \delta, \sigma) $
+     \delta, \sigma) + w_1 \cdot\mathsf{LearnCNet}(\mathcal D_1, \mathbf X_{\setminus i}, \delta, \sigma) $
     % \Else 
     % \State $C \leftarrow \mathcal T$ 
     %\EndIf
     \Else 
     \State $\mathcal{C} \leftarrow
     \highlight[gold4]{\mathsf{learnLeafDistribution}(\mathcal D,
-      \mathbf X, \alpha)}$
+      \mathbf X
+      )}$
     \Comment {Grow a leaf TPM}
     \EndIf
     \State \Return $\mathcal{C}$
@@ -483,23 +486,23 @@ complete evidence inference is still linear $\highlight[petroil2]{O(n)}$!
 %  \caption{\textsf{\textsf{LearnCNet}}($\mathcal{D}$, $\mathbf{X}$, $\alpha$, $\delta$, $\sigma$)}
 %  \label{algo:learn-cnet}
   \begin{algorithmic}[1]
-    \State \textbf{Input:} a dataset $\mathcal{D}$ over RVs $\mathbf{X}$; $\alpha$: $\delta$
+    \State \textbf{Input:} a dataset $\mathcal{D}$ over RVs $\mathbf{X}$;  $\delta$
     min number samples; $\sigma$ min number features
-    \State  \textbf{Output:}  a CNet $\mathcal{C}$ encoding  $\mathsf{p}_{\mathcal{C}}(\textbf{X})$ learned from $\mathcal D$
+    \State  \textbf{Output:}  a CNet $\mathcal{C}$ encoding  $\mathsf{p}_{\mathcal{C}}(\mathbf{X})$ learned from $\mathcal D$
     \If {$|\mathcal D|>\delta$ \textbf{and} $|\mathbf X|>\sigma$}
-    \State $X_i\leftarrow  \highlight[gold4]{\mathsf{select}(\mathcal D, \mathbf X, \alpha)}$
+    \State $X_i\leftarrow  \highlight[gold4]{\mathsf{select}(\mathcal D, \mathbf X)}$
     % \If {$\mathsf{success}$}
     \Comment {select the RV to condition on}
     \State $\mathcal D_0 \leftarrow \{\xi \in \mathcal D: \xi[X_i]=0 \}$, $\mathcal D_1 \leftarrow \{\xi \in \mathcal D: \xi[X_i]=1 \}$
     \State $w_0 \leftarrow |\mathcal D_0| / |\mathcal D|$, $w_1 \leftarrow |\mathcal   D_1| / |\mathcal D|$
     \State $\mathcal{C} \leftarrow
     w_0\cdot\mathsf{LearnCNet}(\mathcal D_0, \mathbf X_{\setminus i},
-    \alpha, \delta, \sigma) + w_1 \cdot\mathsf{LearnCNet}(\mathcal D_1, \mathbf X_{\setminus i}, \alpha, \delta, \sigma) $
+     \delta, \sigma) + w_1 \cdot\mathsf{LearnCNet}(\mathcal D_1, \mathbf X_{\setminus i}, \delta, \sigma) $
     % \Else 
     % \State $C \leftarrow \mathcal T$ 
     %\EndIf
     \Else 
-    \State $\mathcal{C} \leftarrow \mathsf{learnLeafDistribution}(\mathcal D, \mathbf X, \alpha)$
+    \State $\mathcal{C} \leftarrow \mathsf{learnLeafDistribution}(\mathcal D, \mathbf X)$
     \EndIf
     \State \Return $\mathcal{C}$
   \end{algorithmic}
@@ -534,8 +537,9 @@ complete evidence inference is still linear $\highlight[petroil2]{O(n)}$!
       \end{minipage}
     \end{center}
 
+  \vspace{10pt}
   Quadratic and cubic times for \emph{each} RV selection do not scale
-  on high dimensional data\\
+  on high dimensional data \hspace{80pt}$\rightarrow$
   We aim at drastically reducing it!
 \end{frame}
 
@@ -543,7 +547,7 @@ complete evidence inference is still linear $\highlight[petroil2]{O(n)}$!
   \frametitle{XCNets I}
 \small
   \emph{\textbf{XCNets}} (\textbf{Extremely Randomized CNets}) are CNets built by \textsf{LearnCNet} when
-    \textsf{select} chooses one RV \emph{completely at random}.\par
+    \textsf{\textbf{select}} chooses one RV \emph{completely at random}.\par
     {\hfill\textsf{select} time complexity $\rightarrow$ $\highlight[gold4]{O(1)}$!}
     \vspace{20pt}
 
@@ -572,7 +576,7 @@ Because of the mixture of experts interpretations, a path $p=p_{(1)}p_{(2)}\cdot
     single leaf $\mathcal{M}_{l}$ after observing $x_{1} x_{2} \cdots  x_{k}$,
 $\mathsf{p}_l(\mathbf x_{|\mathsf{sc}(\mathcal C)\setminus
   \mathsf{sc}(\mathcal M_l)})$ is decomposed by the chain rule across
-path $p$ .\par
+path $p$ \par
 {\hfill$\rightarrow$  \highlighttext[petroil2]{shuffling
   $X_{p_(0)},\dots,X_{p_{k}}$ does not influence inference!}}\\[10pt]
 
@@ -792,10 +796,10 @@ Moreover, it helps differentiating the local leaf experts
 
   
   Ensembles of XCNets do not require to additionally
-  diversify each components (no bootstrapping required).\\[10pt]
+  diversify each component (e.g. no bootstrapping required).\\[10pt]
 
   Learning up to \textbf{500 components} of XCNets is still \textbf{faster
-than learning 40} of other variants:
+than learning 40} models of other variants:
 
 \vspace{10pt}
 
@@ -827,7 +831,8 @@ than learning 40} of other variants:
           how does a single XCNet \highlighttext[lacamlilac]{compare} to the optimal one learned by
 \textsf{dCSN}?
         \item[\textbf{(Q2)}]
-          how \highlighttext[lacamlilac]{accurate} are ensembles of XCNets compared
+          how \highlighttext[lacamlilac]{accurate} are ensembles of
+          XCNets compared to
 state-of-the-art density estimators? 
         \item[\textbf{(Q3)}]
           how \highlighttext[gold4]{much time} do actually XCNets save in practice?
@@ -887,7 +892,7 @@ state-of-the-art density estimators?
   Average test log-likelihoods for 
   \textsf{entCNet}, \textsf{dCSN}, \textsf{XCNet} and their
   \textsf{PoB} variants $\mathsf{dCSN_{PoB}}$ and $\mathsf{XCNet_{PoB}}$.
-    For randomized models, mean and standard deviation over 10 runs are reported).
+    For randomized models, mean and standard deviation over 10 runs are reported.
 \end{minipage}
 \end{frame}
 
@@ -962,7 +967,7 @@ state-of-the-art density estimators?
     dataset           & \textsf{dCSN} & \textsf{XCNet} & $\mathsf{dCSN_{PoB}}$ &
     $\mathsf{XCNet_{PoB}}$ &\textsf{dCSN$^{\mathsf{40}}$} & \textsf{XCNet$^{\mathsf{40}}_\mathsf{PoB}$}& \textsf{XCNet$^{\mathsf{40}}$} & \textsf{XCNet$^{\mathsf{500}}$} & \textsf{ID-SPN}\\
     \midrule
-    \texttt{NLTCS}& 0&0.2&0.1	&0.01&10&0.2& 0.01 & 3 &310\\ 
+    \texttt{NLTCS}& 7&0.2&0.1	&0.01&10&0.2& 0.01 & 3 &310\\ 
     \texttt{MSNBC} & 12&0.3&0.7&	0.01&499&13.1& 13 & 155 &46266\\ 
     \texttt{KDDCup2k}&112&0.5&12.0&0.32&4126&21.2& 16& 247 &32067\\ 
     \texttt{Plants}&15&0.3&45.5	&0.22&325&1.0& 6 & 77 &18833\\ 
@@ -989,7 +994,7 @@ state-of-the-art density estimators?
 \hspace{30pt}\begin{minipage}{0.8\linewidth}
  \tiny Table 3. Times (in seconds) taken to learn the best models on each dataset
 for \textsf{dCSN}, \textsf{XCNet}, $\mathsf{dCSN_{PoB}}$, $\mathsf{XCNet_{PoB}}$, their ensembles
-and \textsf{ID-SPN}
+and \textsf{ID-SPN}.
 \end{minipage}
 \end{frame}
 
