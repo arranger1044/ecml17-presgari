@@ -95,7 +95,7 @@
 \newlength{\custombulletheight}
 \setlength{\custombulletheight}{\dimexpr0.5\ht1-0.5\ht2}
 
-\title{Fast and Accurate Denstiy Estimation with Extremely Randomized\\
+\title{Fast and Accurate Denstity Estimation with Extremely Randomized\\
   Cutset Networks}
 \author{Nicola {Di
     Mauro}{\raisebox{2pt}{\hspace{2pt}\includegraphics[width=5pt]{figures/yinyang}}}
@@ -767,7 +767,7 @@ Sampling is less affected:
   \small
   Single CNets learned with $\mathsf{LearnCNet}$ are prone to
   overfitting.\par
-  \textbf{\emph{Randomizing the gating function}} in \textsf{XCNets} alleviate this issue.
+  \textbf{\emph{Randomizing the gating function}} in \textsf{XCNets} alleviates this issue.
    \vspace{10pt} 
 \begin{figure}[t]
   %\caption{Negative log-likelihood during learning CNets and XCNets.}
@@ -787,7 +787,7 @@ log-likelihoods) on $\mathsf{KddCup2k}$ and $\mathsf{EachMovie}$
 The latter overfits much later than the former.
 \end{minipage}\par
 \vspace{10pt}
-Moreover, it helps differentiating the local leaf experts 
+Moreover, it helps \textbf{differentiating the local leaf experts }
 \end{frame}
 
 \begin{frame}[t]
@@ -853,6 +853,8 @@ state-of-the-art density estimators?
 
 \begin{frame}[t]
   \frametitle{(Q1) Single Model Comparison}
+  \scriptsize
+  \highlighttext[gold2]{Comparable log-likelihoods} w.r.t. optimal CNets learned with \textbf{dCSN}
       \begin{table}[t]
   \tiny
   \centering
@@ -861,25 +863,25 @@ state-of-the-art density estimators?
     %\toprule
     dataset & \tiny\textsf{entCNet} & \tiny\textsf{dCSN} & \tiny\textsf{XCNet} & \tiny$\mathsf{dCSN_{PoB}}$ & \tiny$\mathsf{XCNet_{PoB}}$\\
     \midrule
-    \texttt{NLTCS}        &-6.06 &\textbf{-6.03}&6.06$\pm$0.01&-6.09&-6.17$\pm$0.05\\
-    \texttt{MSNBC}        &\textbf{-6.05}&\textbf{-6.05}&-6.09$\pm$0.02&-6.05&-6.18$\pm$0.03\\
-    \texttt{KDDCup2k}     & - &\textbf{-2.18}&-2.19$\pm$0.01&-2.19&-2.21$\pm$0.01\\
-    \texttt{Plants}       &\textbf{-13.25}&\textbf{-13.25}&-13.43$\pm$0.07&-14.89&-15.66$\pm$0.22\\
-    \texttt{Audio}        &\textbf{-42.05}&-42.10&-42.66$\pm$0.14&-42.95&-44.02$\pm$0.22\\
+    \texttt{NLTCS}        &-6.06 &\cellcolor{gold2}\color{white}\textbf{-6.03}&\color{white}\cellcolor{gold2}6.06$\pm$0.01&-6.09&-6.17$\pm$0.05\\
+    \texttt{MSNBC}        &\textbf{-6.05}&\cellcolor{gold2}\color{white}\textbf{-6.05}&\cellcolor{gold2}\color{white}-6.09$\pm$0.02&-6.05&-6.18$\pm$0.03\\
+    \texttt{KDDCup2k}     & - &\cellcolor{gold2}\color{white}\textbf{-2.18}&\cellcolor{gold2}\color{white}-2.19$\pm$0.01&-2.19&-2.21$\pm$0.01\\
+    \texttt{Plants}       &\textbf{-13.25}&\cellcolor{gold2}\color{white}\textbf{-13.25}&\cellcolor{gold2}\color{white}-13.43$\pm$0.07&-14.89&-15.66$\pm$0.22\\
+    \texttt{Audio}        &\textbf{-42.05}&\cellcolor{gold2}\color{white}-42.10&\cellcolor{gold2}\color{white}-42.66$\pm$0.14&-42.95&-44.02$\pm$0.22\\
     \texttt{Jester}       &-55.56&\textbf{-55.40}&-56.10$\pm$0.19&-56.23&-57.39$\pm$0.15\\
     \texttt{Netflix}      &\textbf{-58.71}&\textbf{-58.71}&-59.21$\pm$0.06&-60.20&-61.40$\pm$0.25\\
     \texttt{Accidents}    &-30.69&\textbf{-29.84}& -31.58$\pm$0.24 &-36.24&-40.22$\pm$0.46\\
-    \texttt{Retail}       &\textbf{-10.94}&-11.24&-11.44$\pm$0.09&-11.06&-11.19$\pm$0.04\\
+    \texttt{Retail}       &\textbf{-10.94}&\cellcolor{gold2}\color{white}-11.24&\cellcolor{gold2}\color{white}-11.44$\pm$0.09&-11.06&-11.19$\pm$0.04\\
     \texttt{Pumsb-star}   &-24.42&\textbf{-23.91}&-25.55$\pm$0.34&-32.11&-39.91$\pm$2.48\\
-    \texttt{DNA}          &-87.59&\textbf{-87.31}&-87.67$\pm$0.00&-98.83&-99.84$\pm$0.05\\
-    \texttt{Kosarek}      &\textbf{-11.04}&-11.20&-11.70$\pm$0.13&-11.38&-11.80$\pm$0.07\\
-    \texttt{MSWeb}        &\textbf{-10.07}&-10.10&-10.47$\pm$0.10&-10.19&-10.43$\pm$0.07\\
+    \texttt{DNA}          &-87.59&\cellcolor{gold2}\color{white}\textbf{-87.31}&\cellcolor{gold2}\color{white}-87.67$\pm$0.00&-98.83&-99.84$\pm$0.05\\
+    \texttt{Kosarek}      &\textbf{-11.04}&\cellcolor{gold2}\color{white}-11.20&\cellcolor{gold2}\color{white}-11.70$\pm$0.13&-11.38&-11.80$\pm$0.07\\
+    \texttt{MSWeb}        &\textbf{-10.07}&\cellcolor{gold2}\color{white}-10.10&\cellcolor{gold2}\color{white}-10.47$\pm$0.10&-10.19&-10.43$\pm$0.07\\
     \texttt{Book}         &\textbf{-37.35}&-38.93&-42.36$\pm$0.28&-38.21&-39.47$\pm$0.33\\
     \texttt{EachMovie}    &-58.37&\textbf{-58.06}&-60.71$\pm$0.89&-59.70&-62.58$\pm$0.38\\
     \texttt{WebKB}        &-162.17&\textbf{-161.92}&-167.45$\pm$1.59&-168.7&-174.78$\pm$0.81\\
     \texttt{Reuters-52}   &\textbf{-88.55}&-88.65&-99.52$\pm$1.93&-90.51&-100.25$\pm$0.57\\
     \texttt{20NewsG} & - &\textbf{-161.72}&-172.6$\pm$1.40&-162.25&-167.39$\pm$0.74\\
-    \texttt{BBC}          &-263.08&\textbf{-261.79}&\textbf{-261.79}$\pm$0.00&-264.56&-274.83$\pm$1.15\\
+    \texttt{BBC}          &-263.08&\cellcolor{gold2}\color{white}\textbf{-261.79}&\cellcolor{gold2}\color{white}\textbf{-261.79}$\pm$0.00&-264.56&-274.83$\pm$1.15\\
     \texttt{Ad}           &-16.92&\textbf{-16.34}&-18.70$\pm$1.44&-36.44&-36.94$\pm$1.41\\
     \bottomrule
   \end{tabular}
@@ -918,23 +920,23 @@ state-of-the-art density estimators?
     \texttt{NLTCS}      & \textbf{-6.00}                                & -6.01                                 & \textbf{-6.00}                  & -6.01   & \textbf{-6.00}   & \textbf{-5.99}   & -6.02          & -6.00           & -6.02           \\ 
     \texttt{MSNBC}      & -6.08                                & -6.15                                 & \textbf{-6.05}                  & -6.11   & -6.06   & -6.06            & \textbf{-6.04} & \textbf{-6.04}  & \textbf{-6.04}  \\ 
     \texttt{KDDCup2k}   & -2.14                                & -2.15                                 & -2.15                  & \textbf{-2.13}   & \textbf{-2.13}   & \textbf{-2.13}   & \textbf{-2.13}          & -2.17           & -2.16           \\ 
-    \texttt{Plants}     & -12.32                               & -12.67                                & -12.59                 & -13.09  & \textbf{-11.99}  & \textbf{-11.84}  & -12.54         & -12.80          & -12.65          \\ 
-    \texttt{Audio}      & -40.09                               & -39.84                                & -40.19                 & -40.30  & \textbf{-39.77}  & \textbf{-39.39}  & -39.79         & -40.32          & -40.50          \\ 
-    \texttt{Jester}     & -52.88                               & -52.82                                & -52.99                 & -53.64  & \textbf{-52.65}  & \textbf{-52.21}  & -52.86         & -53.31          & -53.85          \\ 
-    \texttt{Netflix}    & -56.55                               & -56.44                                & -56.69                 & -57.64  & \textbf{-56.38}  & \textbf{-55.93}  & -56.36         & -57.22          & -57.03          \\ 
+    \texttt{Plants}     & -12.32                               & -12.67                                & -12.59                 & -13.09  &\cellcolor{lacamlilac}\color{white} \textbf{-11.99}  &\cellcolor{lacamlilac}\color{white} \textbf{-11.84}  & -12.54         & -12.80          & -12.65          \\ 
+    \texttt{Audio}      & -40.09                               & -39.84                                & -40.19                 & -40.30  &\cellcolor{lacamlilac}\color{white} \textbf{-39.77}  &\cellcolor{lacamlilac}\color{white} \textbf{-39.39}  & -39.79         & -40.32          & -40.50          \\ 
+    \texttt{Jester}     & -52.88                               & -52.82                                & -52.99                 & -53.64  &\cellcolor{lacamlilac}\color{white} \textbf{-52.65}  &\cellcolor{lacamlilac}\color{white} \textbf{-52.21}  & -52.86         & -53.31          & -53.85          \\ 
+    \texttt{Netflix}    & -56.55                               & -56.44                                & -56.69                 & -57.64  & \textbf{-56.38}  &\cellcolor{lacamlilac}\color{white} \textbf{-55.93}  & -56.36         & -57.22          & -57.03          \\ 
     \texttt{Accidents}  & -29.88                               & -29.45                                & \textbf{-29.27}                 & -36.92  & -29.31  & -29.10           & -26.98         & -27.11          & \textbf{-26.32} \\ 
     \texttt{Retail}     & -10.84                               & \textbf{-10.81}                                & -11.17                 & -10.88  & -10.93  & -10.91           & -10.85         & -10.88          & -10.87          \\ 
     \texttt{Pumsb-star} & -23.98                               & -23.46                                & -23.78                 & -32.91  & \textbf{-23.44}  & -23.31           & -22.41         & -23.55          & \textbf{-21.72} \\ 
     \texttt{DNA}        &\textbf{-81.07}                               & -85.67                                & -85.95                 & -98.28  & -84.96  & -84.17           & -81.21         & \textbf{-80.03} & -80.65          \\ 
     \texttt{Kosarek}    & -10.74                               & \textbf{-10.60}                                & -10.97                 & -10.91  & -10.72  & -10.66           & \textbf{-10.60}         & -10.84          & -10.83          \\ 
-    \texttt{MSWeb}      & -9.77                                & -9.74                                 & -9.93                  & -9.83   & \textbf{-9.66}   & \textbf{-9.62}   & -9.73          & -9.77           & -9.70           \\ 
+    \texttt{MSWeb}      & -9.77                                & -9.74                                 & -9.93                  & -9.83   &\cellcolor{lacamlilac}\color{white} \textbf{-9.66}   &\cellcolor{lacamlilac}\color{white} \textbf{-9.62}   & -9.73          & -9.77           & -9.70           \\ 
     \texttt{Book}       & -35.55                               & \textbf{-34.46}                                & -37.38                 & -34.77  & -36.35  & -35.45           & \textbf{-34.14}         & -35.56          & -36.41          \\ 
-    \texttt{EachMovie}  & -53.00                               & \textbf{-51.53}                                & -54.14                 & -51.66  & -51.72  & \textbf{-50.34}  & -51.51         & -55.80          & -54.37          \\ 
-    \texttt{WebKB}      & -153.12                              & \textbf{-152.53}                               & -155.47                & -155.83 & -153.01 & \textbf{-149.20} & -151.84        & -159.13         & -157.43         \\ 
-    \texttt{Reuters-52} & -83.71                               & \textbf{-83.69}                                & -86.19                 & -85.16  & -84.05  & \textbf{-81.87}  & -83.35         & -90.23          & -87.55          \\ 
-    \texttt{20NewsG}    & -156.09                              & -153.12                               & -156.46                & \textbf{-152.21} & -153.89 & \textbf{-151.02} & -151.47        & -161.13         & -158.95         \\ 
-    \texttt{BBC}        & \textbf{-237.42}                              & -247.01                               & -248.84                & -251.31 & -238.47 & \textbf{-229.21} & -248.93        & -257.10         & -257.86         \\ 
-    \texttt{Ad}         & -15.28                               & -14.36                                & -15.55                 & -26.25  & \textbf{-14.20}  & \textbf{-14.00}  & -19.05         & -16.53          & -18.35          \\ 
+    \texttt{EachMovie}  & -53.00                               & \textbf{-51.53}                                & -54.14                 & -51.66  & -51.72  &\cellcolor{lacamlilac}\color{white} \textbf{-50.34}  & -51.51         & -55.80          & -54.37          \\ 
+    \texttt{WebKB}      & -153.12                              & \textbf{-152.53}                               & -155.47                & -155.83 & -153.01 &\cellcolor{lacamlilac}\color{white} \textbf{-149.20} & -151.84        & -159.13         & -157.43         \\ 
+    \texttt{Reuters-52} & -83.71                               & \textbf{-83.69}                                & -86.19                 & -85.16  & -84.05  &\cellcolor{lacamlilac}\color{white} \textbf{-81.87}  & -83.35         & -90.23          & -87.55          \\ 
+    \texttt{20NewsG}    & -156.09                              & -153.12                               & -156.46                & \textbf{-152.21} & -153.89 &\cellcolor{lacamlilac}\color{white} \textbf{-151.02} & -151.47        & -161.13         & -158.95         \\ 
+    \texttt{BBC}        & \textbf{-237.42}                              & -247.01                               & -248.84                & -251.31 & -238.47 &\cellcolor{lacamlilac}\color{white} \textbf{-229.21} & -248.93        & -257.10         & -257.86         \\ 
+    \texttt{Ad}         & -15.28                               & -14.36                                & -15.55                 & -26.25  & \cellcolor{lacamlilac}\color{white}\textbf{-14.20}  &\cellcolor{lacamlilac}\color{white} \textbf{-14.00}  & -19.05         & -16.53          & -18.35          \\ 
     % \midrule
 % \multirow{2}{*}{\textbf{Avrg rank}} & \textbf{2.7} & \textbf{2.3} & \textbf{3.85} & \textbf{3.9} &
 % \textbf{1.95} & & & &\\ \cmidrule(l){2-6}
@@ -986,7 +988,7 @@ state-of-the-art density estimators?
     \texttt{Reuters-52}&9947&39.3&24.3&	0.05&65498&2.7& 414 & 8423 &70863\\ 
     \texttt{20NewsG}&16866&51.3&40.7&	0.01&153908&4.4& 506& 9883&163256\\ 
     \texttt{BBC}&21381&8.4&7.3&	0.02&69572&0.4& 256& 4251 &61471\\ 
-    \texttt{Ad}&5212&116.5&134.0&	0.08&75694&4.2&2403 & 30538 &87522\\ 
+    \texttt{Ad}&5212&116.5&134.0&	0.08&\cellcolor{gold6}\color{white}75694&4.2&\cellcolor{gold6}\color{white}2403 &\cellcolor{gold6}\color{white} 30538 &\cellcolor{gold6}\color{white}87522\\ 
     \bottomrule
   \end{tabular}
   \label{tab:exptimes}
@@ -1012,7 +1014,7 @@ and \textsf{ID-SPN}.
 
   Due to their simplicity to implement, \highlighttext[gold4]{\textbf{\emph{fast learning times}}}, and \highlighttext[lacamlilac]{\emph{\textbf{accurate
 inference performances}}}, XCNets set the \textbf{new baseline to compare against} for density
-estimation with TPMs (and not!).\\[20pt]
+estimation with TPMs (but not only!).\\[20pt]
 
 \textbf{\normalsize Future works}\par 
 Exploiting the mixture of
